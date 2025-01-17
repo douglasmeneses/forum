@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const config = require("./config.json").development; // Importa as configurações do arquivo config.json
+const config = require("./config.json").development;
 
 const sequelize = new Sequelize(
   config.database,

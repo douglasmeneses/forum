@@ -7,6 +7,6 @@ router.get("/", PostController.getFilteredPosts);
 router.get("/:id", PostController.getPostById);
 router.put("/:id", PostController.updatePost);
 router.delete("/:id", PostController.deletePost);
-router.post("/:id/like", PostController.incrementLikes); // Nova rota para incrementar likes
+router.post("/:id/like", PostController.incrementLikes);
 
 module.exports = router;

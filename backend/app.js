@@ -1,5 +1,5 @@
 const express = require("express");
-const { expressjwt: jwt } = require("express-jwt"); // Corrigir a importação
+const { expressjwt: jwt } = require("express-jwt");
 const sequelize = require("./config/database");
 const userRoutes = require("./routes/userRoutes");
 const postRoutes = require("./routes/postRoutes");
@@ -21,15 +21,14 @@ sequelize.sync().then(() => {
 
 app.use(express.json());
 
-const jwtSecret = "your_jwt_secret"; // Replace with your actual secret
+const jwtSecret = "your_jwt_secret";
 
-// Protected routes
 app.use(
   jwt({ secret: jwtSecret, algorithms: ["HS256"] }).unless({
-    path: ["/api/users/create", "/api/users/login"], // Exclude user creation and login routes from JWT validation
+    path: ["/api/users/create", "/api/users/login"],
   })
 );
-// Public routes
+
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 
