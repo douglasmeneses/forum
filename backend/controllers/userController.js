@@ -2,8 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const userService = require("../services/userService");
 
-const jwtSecret = "your_jwt_secret"; // Replace with your actual secret
-
+const jwtSecret = "a8fj93$%ksJklsd0Fjs9Psd8fKj@93jfK2S#sd8fLKs!d9Fj0sk3L#9Fk";
 const createUser = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
