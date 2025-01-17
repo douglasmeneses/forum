@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: forum
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  mysql-cli:
+    image: mysql:5.7
+    command: bash -c "mysql -h db -uuser -ppassword forum"
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
